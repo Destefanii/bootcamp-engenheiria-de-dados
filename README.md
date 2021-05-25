@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="http://hackathon.url.com/" alt="Project logo"></a>
+ <img src="https://pbs.twimg.com/media/DZ4ekTdW4AcMBfG.jpg" alt="Project logo"></a>
 </p>
 <h3 align="center">Project Title</h3>
 
