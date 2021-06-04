@@ -11,10 +11,7 @@ Resources:
         BlockPublicPolicy: True
         IgnorePublicAcls: True
         RestrictPublicBuckets: True
-    BucketEncryption:
-      ServerSideEncryptionConfiguration:
-        - ServerSideEncrypytionByDefault:
-            SSEAlgorithm: AES256
+   
 
   Bucket2HoupaPedidosS3:
     Type: AWS::S3::Bucket
