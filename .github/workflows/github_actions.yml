@@ -33,4 +33,4 @@ jobs:
         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         ENVIRONMENT: MASTER
       run: |
-        python auto/github_actions/deploy.py
+        python auto/github_actions/buckets.py
