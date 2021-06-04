@@ -33,4 +33,4 @@ jobs:
         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         ENVIRONMENT: DEVELOP
       run: |
-        cdk deploy "*" --require-approval never
+        python auto/github_actions/deploy.py
