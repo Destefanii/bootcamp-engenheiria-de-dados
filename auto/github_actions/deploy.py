@@ -40,13 +40,13 @@ def get_existing_stacks():
                             'DELETE_FAILED', 
                             'IMPORT_COMPLETE', 
                             'DELETE_IN_PROGRESS', 
-                            'ROLLBACK_COMPLETE', 
                             'ROLLBACK_FAILED', 
                             'IMPORT_ROLLBACK_COMPLETE', 
                             'UPDATE_COMPLETE_CLEANUP_IN_PROGRESS', 
                             'CREATE_COMPLETE', 
                             'IMPORT_ROLLBACK_FAILED', 
-                            'UPDATE_ROLLBACK_COMPLETE']
+                            'UPDATE_ROLLBACK_COMPLETE',
+                            'ROLLBACK_COMPLETE']
     )
 
     return [stack['StackName'] for stack in response ['StackSummaries']]
