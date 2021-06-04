@@ -38,7 +38,7 @@ def update_stack(stack_name, template_body, **kwargs):
 
     cloudformation_client.get_waiter('stack_update_complete').wait(
         StackName=stack_name,
-        WatiterConfig={'Delay': 5, 'MaxAttempts': 600}
+        WaiterConfig={'Delay': 5, 'MaxAttempts': 600}
     )
 
     cloudformation_client.get_waiter('stack_exists').wait(StackName=stack_name)
