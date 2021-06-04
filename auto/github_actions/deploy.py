@@ -58,10 +58,6 @@ def create_or_update_stack():
     with open(_get_abs_path('bucket.yml')) as f:
         template_body = f.read()
 
-    if stack_name in existing_stacks:
-        logging.info(f'UPDATING STACK {stack_name}')
-        update_stack(stack_name, template_body)
-    else:
         logging.info(f'CREATING STACK {stack_name}')
         update_stack(stack_name, template_body)
 
