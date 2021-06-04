@@ -2,7 +2,7 @@
   <a href="" rel="noopener">
  <img src="https://pbs.twimg.com/media/DZ4ekTdW4AcMBfG.jpg" alt="Project logo"></a>
 </p>
-<h3 align="center">Project Title</h3>
+<h3 align="center">Bootcamp engenharia de dados v2</h3>
 
 <div align="center">
 
