@@ -47,14 +47,6 @@ def update_stack(stack_name, template_body, **kwargs):
     logging.info(f'CREATE COMPLETE')
 
 
-def get_existing_stacks():
-    response = cloudformation_client.list_stacks(
-        StacksStatusFilter=['CREATE_COMPLETE', 'UPDATE_COMPLETE', 'UPDATE_ROllBACK_COMPLETE']
-    )
-
-    return [stack['StackName'] for stack in response ['StackSummaries']]
-
-
 def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
