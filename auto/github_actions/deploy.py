@@ -7,6 +7,14 @@ logging.getLogger().setLevel(logging.INFO)
 cloudformation_client = boto3.client('cloudformation')
 
 
+def get_existing_stacks():
+    response = cloudformation_client.list_stacks(
+        StackStatusFilter=['CREATE_COMPLETE', 'UPDATE_COMPLETE', 'UPDATE_ROLLBACK_COMPLETE']
+    )
+
+    return [stack['StackName'] for stack in response ['StackSummaries']]
+
+
 def create_stack(stack_name, template_body, **kwargs):
     cloudformation_client.create_stack(
         StackName=stack_name,
@@ -26,6 +34,7 @@ def create_stack(stack_name, template_body, **kwargs):
 
 
 def update_stack(stack_name, template_body, **kwargs):
+    
     try:
         cloudformation_client.update_stack(
             StackName=stack_name,
@@ -47,14 +56,6 @@ def update_stack(stack_name, template_body, **kwargs):
     logging.info(f'CREATE COMPLETE')
 
 
-def get_existing_stacks():
-    response = cloudformation_client.list_stacks(
-        StackStatusFilter=['CREATE_COMPLETE', 'UPDATE_COMPLETE', 'UPDATE_ROLLBACK_COMPLETE']
-    )
-
-    return [stack['StackName'] for stack in response ['StackSummaries']]
-
-
 def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
@@ -66,9 +67,12 @@ def create_or_update_stack():
 
     existing_stacks = get_existing_stacks()
 
-  
-    logging.info(f'CREATING STACK {stack_name}')
-    update_stack(stack_name, template_body)
+    if stack_name in existing_stacks:
+        logging.info(f'UPDATING STACK {stack_name}')
+        update_stack(stack_name, template_body)
+    else:
+        logging.info(f'CREATING STACK {stack_name}')
+        update_stack(stack_name, template_body)
 
 if __name__ == '__main__':
     create_or_update_stack()
