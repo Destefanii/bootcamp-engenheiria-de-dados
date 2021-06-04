@@ -46,6 +46,8 @@ def update_stack(stack_name, template_body, **kwargs):
     cloudformation_client.get_waiter('stack_exists').wait(StackName=stack_name)
     logging.info(f'CREATE COMPLETE')
 
+    return [stack['StackName'] for stack in response ['StackSummaries']]
+
 
 def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
@@ -55,8 +57,6 @@ def create_or_update_stack():
     stack_name= 's3-bucket-ci'
     with open(_get_abs_path('bucket.yml')) as f:
         template_body = f.read()
-
-    existing_stacks = get_existing_stacks()
 
     if stack_name in existing_stacks:
         logging.info(f'UPDATING STACK {stack_name}')
