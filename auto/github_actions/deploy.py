@@ -30,7 +30,7 @@ def update_stack(stack_name, template_body, **kwargs):
         cloudformation_client.update_stack(
             StackName=stack_name,
             Capabilities=['CAPABILITY_IAM','CAPABILITY_NAMED_IAM'],
-            TemplateBody = template_body
+            TemplateBody=template_body
         )
 
     except ClientError as e:
