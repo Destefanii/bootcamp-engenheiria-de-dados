@@ -46,7 +46,7 @@ def update_stack(stack_name, template_body, **kwargs):
 
 def get_existing_stacks():
     response = cloudformation_client.list_stacks(
-        StacksStatusFilter=['CREATE_COMPLETE', 'UPDATE_COMPLETE', 'UPDATE_ROllBACK_COMPLETE']
+        StackStatusFilter=['CREATE_COMPLETE', 'UPDATE_COMPLETE', 'UPDATE_ROllBACK_COMPLETE']
     )
 
     return [stack['StackName'] for stack in response ['StackSummaries']]
