@@ -1,14 +1,14 @@
-name: Deploy Data Platform to Development
+name: Deploy Data Platform to master
 
 on:
   push:
     branches:
-      - develop-**
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: develop
+    environment: master
 
     steps:
     - uses: actions/checkout@v2
@@ -31,6 +31,6 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-        ENVIRONMENT: DEVELOP
+        ENVIRONMENT: master
       run: |
         python auto/github_actions/deploy.py
