@@ -6,6 +6,7 @@ import os
 logging.getLogger().setLevel(logging.INFO)
 cloudformation_client = boto3.client('cloudformation')
 
+
 def create_stack(stack_name, template_body, **kwargs):
     cloudformation_client.create_stack(
         StackName=stack_name,
@@ -22,6 +23,7 @@ def create_stack(stack_name, template_body, **kwargs):
 
     cloudformation_client.get_waiter('stack_exists').wait(StackName=stack_name)
     logging.info(f'CREATE COMPLETE')
+
 
 def update_stack(stack_name, template_body, **kwargs):
     try:
