@@ -66,12 +66,9 @@ def create_or_update_stack():
 
     existing_stacks = get_existing_stacks()
 
-    if stack_name in existing_stacks:
-        logging.info(f'UPDATING STACK {stack_name}')
-        update_stack(stack_name, template_body)
-    else:
-        logging.info(f'CREATING STACK {stack_name}')
-        update_stack(stack_name, template_body)
+  
+    logging.info(f'CREATING STACK {stack_name}')
+    update_stack(stack_name, template_body)
 
 if __name__ == '__main__':
     create_or_update_stack()
