@@ -44,6 +44,7 @@ def update_stack(stack_name, template_body, **kwargs):
     cloudformation_client.get_waiter('stack_exists').wait(StackName=stack_name)
     logging.info(f'CREATE COMPLETE')
 
+
 def get_existing_stacks():
     response = cloudformation_client.list_stacks(
         StackStatusFilter=['REVIEW_IN_PROGRESS', 
