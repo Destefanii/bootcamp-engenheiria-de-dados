@@ -55,7 +55,7 @@ def _get_abs_path(path):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
 def create_or_update_stack():
-    stack_name= 's3-bucket-ci'
+    stack_name= 's3-bucket-ci-la-la'
     with open(_get_abs_path('bucket.yml')) as f:
         template_body = f.read()
 
