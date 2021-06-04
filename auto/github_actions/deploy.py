@@ -26,17 +26,12 @@ def create_stack(stack_name, template_body, **kwargs):
 
 
 def update_stack(stack_name, template_body, **kwargs):
-    try:
-        cloudformation_client.update_stack(
-            StackName=stack_name,
-            Capabilities=['CAPABILITY_IAM','CAPABILITY_NAMED_IAM'],
-            TemplateBody = template_body
-        )
 
-    except ClientError as e:
-        if 'No updates are to be performed' in str(e):
-            logging.info(f'SKIPPING UPDATE: No updates to be performed at stack {stack_name}')
-            return e
+    cloudformation_client.update_stack(
+        StackName=stack_name,
+        Capabilities=['CAPABILITY_IAM','CAPABILITY_NAMED_IAM'],
+        TemplateBody = template_body
+    )
 
     cloudformation_client.get_waiter('stack_update_complete').wait(
         StackName=stack_name, 
